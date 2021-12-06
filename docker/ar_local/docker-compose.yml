@@ -1,0 +1,65 @@
+version: "3.5"
+services:
+  ar-redis:
+    image: redis:alpine
+    container_name: ar-redis
+    volumes:
+      - ar-redis:/data
+    ports:
+      - "16377:6379"
+    networks:
+      - ar
+
+  ar-mysql:
+    image: mysql:5.7.22
+    container_name: ar-mysql
+    working_dir: /application
+    volumes:
+      - ar-mysql:/var/lib/mysql/
+    environment:
+      MYSQL_ROOT_PASSWORD: KBHJ8765ljk767kh
+      MYSQL_DATABASE: app
+    ports:
+      - "2324:3306"
+    networks:
+      - ar
+
+  ar-nginx:
+    image: nginx:alpine
+    container_name: ar-nginx
+    working_dir: /application
+    volumes:
+      - ../../:/application
+      - ./phpdocker/nginx:/etc/nginx/conf.d
+    ports:
+      - "80:80"
+    networks:
+      - ar
+    depends_on:
+      - ar-php-fpm
+
+  ar-php-fpm:
+    build: phpdocker/php-fpm
+    container_name: ar-php-fpm
+    working_dir: /application
+    volumes:
+      - ../../:/application
+      - ./phpdocker/php-fpm/php-ini-overrides.ini:/etc/php/7.4/fpm/conf.d/99-overrides.ini
+    ports:
+      - "9000"
+    networks:
+      - ar
+    environment:
+      APP_ENV: local
+      CONTAINER_ROLE: app
+
+networks:
+  ar:
+    driver: bridge
+
+volumes:
+  ar-mysql:
+    driver: "local"
+  ar-redis:
+    driver: "local"
+
