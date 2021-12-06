@@ -15,6 +15,7 @@ class CreateBasicCardsTable extends Migration
     {
         Schema::create('basic_cards', function (Blueprint $table) {
             $table->id();
+            ////
             $table->timestamps();
             $table->unsignedInteger('card_index');
             $table->char('document_number', 191);
