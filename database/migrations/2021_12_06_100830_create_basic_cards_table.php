@@ -16,10 +16,10 @@ class CreateBasicCardsTable extends Migration
         Schema::create('basic_cards', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->unsignedInteger('card_index');
+            $table->unsignedInteger('card_index')->nullable();
             $table->char('document_number', 191);
             $table->smallInteger('sheet');
-            $table->smallInteger('continue_on_sheet');
+            $table->smallInteger('continue_on_sheet')->nullable();
             $table->text('document_name');
             $table->text('subdivision');
             $table->text('continue_on_company');
