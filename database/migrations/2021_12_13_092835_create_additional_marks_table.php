@@ -15,8 +15,9 @@ class CreateAdditionalMarksTable extends Migration
     {
         Schema::create('additional_marks', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
             $table->text('name');
+
+            $table->timestamps();
         });
     }
 

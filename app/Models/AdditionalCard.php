@@ -24,4 +24,14 @@ class AdditionalCard extends Model
     {
         return $this->belongsTo(AdditionalMark::class);
     }
+
+    public function basicCard()
+    {
+        return $this->belongsTo(BasicCard::class);
+    }
+
+    public function additionalFiles()
+    {
+        return $this->hasMany(AdditionalFile::class);
+    }
 }

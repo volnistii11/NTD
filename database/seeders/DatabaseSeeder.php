@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\AdditionalFile;
 use App\Models\BasicCard;
 use App\Models\BasicFormat;
 use App\Models\BasicSection;
@@ -23,6 +24,10 @@ class DatabaseSeeder extends Seeder
             BasicCardSeeder::class,
             AdditionalMarkSeeder::class,
             AdditionalCardSeeder::class,
+            ApplicabilityCardSeeder::class,
+            ChangesCardSeeder::class,
+            CopiesCardSeeder::class,
+            AdditionalFileSeeder::class,
         ]);
     }
 }

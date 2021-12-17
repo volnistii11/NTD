@@ -28,6 +28,7 @@ class BasicCard extends Model
         'tk_inventory_number',
         'tk_date_supply',
         'tk_number_of_sheets',
+
         'basic_format_id',
         'basic_section_id'
     ];
@@ -40,5 +41,25 @@ class BasicCard extends Model
     public function basicSection()
     {
         return $this->belongsTo(BasicSection::class);
+    }
+
+    public function additionalCards()
+    {
+        return $this->hasMany(AdditionalCard::class);
+    }
+
+    public function applicabilityCards()
+    {
+        return $this->hasMany(ApplicabilityCard::class);
+    }
+
+    public function changesCards()
+    {
+        return $this->hasMany(ChangesCard::class);
+    }
+
+    public function copiesCards()
+    {
+        return $this->hasMany(CopiesCard::class);
     }
 }

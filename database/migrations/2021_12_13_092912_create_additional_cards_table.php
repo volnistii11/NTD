@@ -15,7 +15,6 @@ class CreateAdditionalCardsTable extends Migration
     {
         Schema::create('additional_cards', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
             $table->text('document_drive_storage');
             $table->text('full_disk_sccrc32');
             $table->date('check_sc_date');
@@ -25,6 +24,8 @@ class CreateAdditionalCardsTable extends Migration
 
             $table->foreignId('basic_card_id')->constrained();
             $table->foreignId('additional_mark_id')->constrained();
+
+            $table->timestamps();
         });
     }
 
