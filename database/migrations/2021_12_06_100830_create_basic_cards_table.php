@@ -15,7 +15,6 @@ class CreateBasicCardsTable extends Migration
     {
         Schema::create('basic_cards', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
             $table->unsignedInteger('card_index')->nullable();
             $table->char('document_number', 191);
             $table->smallInteger('sheet');
@@ -37,6 +36,9 @@ class CreateBasicCardsTable extends Migration
 
             $table->foreignId('basic_format_id')->constrained();
             $table->foreignId('basic_section_id')->constrained();
+
+            $table->timestamps();
+
             $table->unique(['document_number', 'sheet']);
         });
     }

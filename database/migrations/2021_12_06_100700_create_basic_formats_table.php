@@ -15,8 +15,9 @@ class CreateBasicFormatsTable extends Migration
     {
         Schema::create('basic_formats', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
             $table->text('name');
+
+            $table->timestamps();
         });
     }
 

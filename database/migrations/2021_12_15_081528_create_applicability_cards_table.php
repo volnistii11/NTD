@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateBasicSectionsTable extends Migration
+class CreateApplicabilityCardsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,13 @@ class CreateBasicSectionsTable extends Migration
      */
     public function up()
     {
-        Schema::create('basic_sections', function (Blueprint $table) {
+        Schema::create('applicability_cards', function (Blueprint $table) {
             $table->id();
-            $table->text('name');
+            $table->date('date');
+            $table->text('designation');
+            $table->text('cypher');
+
+            $table->foreignId('basic_card_id')->constrained();
 
             $table->timestamps();
         });
@@ -28,6 +32,6 @@ class CreateBasicSectionsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('basic_sections');
+        Schema::dropIfExists('applicability_cards');
     }
 }
