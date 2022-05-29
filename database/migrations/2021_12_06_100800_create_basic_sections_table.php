@@ -16,6 +16,7 @@ class CreateBasicSectionsTable extends Migration
         Schema::create('basic_sections', function (Blueprint $table) {
             $table->id();
             $table->text('name');
+            $table->smallInteger('section_number');
 
             $table->timestamps();
         });

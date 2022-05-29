@@ -14,7 +14,7 @@ class BasicSectionFactory extends Factory
     public function definition()
     {
         return [
-            'name' => $this->faker->word,
+            'name' => "will be filled in seeders",
         ];
     }
 }
